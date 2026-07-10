@@ -1,9 +1,4 @@
-export const config = {
-  runtime: 'edge',
-};
-
-export default async function handler() {
-  const html = `<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -48,9 +43,5 @@ export default async function handler() {
     </div>
 
 </body>
-</html>`;
+</html>
 
-  return new Response(html, {
-    headers: { 'Content-Type': 'text/html; charset=utf-8' },
-  });
-}
