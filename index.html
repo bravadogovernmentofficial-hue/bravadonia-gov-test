@@ -222,5 +222,92 @@
   </footer>
 
   <script src="script.js"></script>
+<!-- UT3DN Shutdown Notice -->
+<style>
+  #ut3dn-shutdown-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 99999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+  #ut3dn-shutdown-overlay.visible {
+    opacity: 1;
+    visibility: visible;
+  }
+  #ut3dn-shutdown-modal {
+    background: #0a0f1a;
+    border: 1px solid #1e293b;
+    border-radius: 12px;
+    padding: 2rem 2.5rem;
+    max-width: 420px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+    color: #e2e8f0;
+    font-family: system-ui, -apple-system, sans-serif;
+  }
+  #ut3dn-shutdown-modal h2 {
+    margin: 0 0 0.75rem;
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: #f1f5f9;
+  }
+  #ut3dn-shutdown-modal p {
+    margin: 0 0 1.5rem;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #94a3b8;
+  }
+  #ut3dn-shutdown-modal button {
+    background: #1e40af;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 0.6rem 1.5rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+  #ut3dn-shutdown-modal button:hover {
+    background: #1d4ed8;
+  }
+</style>
+
+<div id="ut3dn-shutdown-overlay">
+  <div id="ut3dn-shutdown-modal">
+    <h2>Station Notice</h2>
+    <p>UT3DN has shut down as of September 8th, 2026.</p>
+    <button onclick="document.getElementById('ut3dn-shutdown-overlay').classList.remove('visible')">
+      Understood
+    </button>
+  </div>
+</div>
+
+<script>
+  // Show the popup once the page has loaded
+  window.addEventListener('DOMContentLoaded', () => {
+    // Optional: only show once per browser (uncomment the next 3 lines if desired)
+    // if (localStorage.getItem('ut3dn-shutdown-seen')) return;
+    // localStorage.setItem('ut3dn-shutdown-seen', '1');
+
+    const overlay = document.getElementById('ut3dn-shutdown-overlay');
+    overlay.classList.add('visible');
+
+    // Close when clicking the dark backdrop
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) {
+        overlay.classList.remove('visible');
+      }
+    });
+  });
+</script>
 </body>
 </html>
